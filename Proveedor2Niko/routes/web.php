@@ -17,10 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-
-
 Route::get('/principal', function () {
     return view('PrincipalView');
+});
+
+Route::get('/Login', function () {
+    return view('adminLogin');
 });
