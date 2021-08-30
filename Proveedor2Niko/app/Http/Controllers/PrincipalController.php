@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\tb_producto;
-use Illuminate\Support\Facades\DB;
 
-class ProductoController extends Controller
+class PrincipalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +13,7 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = tb_producto::all();
-        return view('ProductoView')->with('productos', $productos);
-    }
-
-    public function ShowAgregar()
-    {
-        $categorias['categorias'] = DB::table('tb_categoria')->get();
-        return view('crear')->with('categorias', $categorias);
+        return view('PrincipalView');
     }
 
     /**
@@ -43,19 +34,7 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-
-        //asi se validan los campos
-        request()->validate([
-            'nombre' => 'required',
-            'precio' => 'required',
-            'imagen' => 'required',
-            'stock' => 'required',
-            'categoria' => 'required'
-        ], [
-
-            'nombre.required' => 'El nombre del producto es requerido'
-
-        ]);
+        //
     }
 
     /**

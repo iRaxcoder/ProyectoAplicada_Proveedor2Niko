@@ -1,7 +1,6 @@
 @extends('Plantillas.Principal')
 
-@section("cuerpo")
 
-
+@section('cuerpo')
 
 @endsection

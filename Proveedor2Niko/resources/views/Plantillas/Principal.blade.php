@@ -18,10 +18,10 @@
       <a class="nav-link active" id="home-tab" data-toggle="tab" href="/principal" role="tab" aria-controls="home" aria-selected="true">Niko</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Productos</a>
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="/Productos/gestionar" role="tab" aria-controls="profile" aria-selected="false">Productos</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Categorías</a>
+      <a class="nav-link" id="contact-tab" data-toggle="tab" href="/Categorias/gestionar" role="tab" aria-controls="contact" aria-selected="false">Categorías</a>
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">

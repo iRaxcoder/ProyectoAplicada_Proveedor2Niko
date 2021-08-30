@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\PrincipalController;
+use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/principal', [ProductoController::class, 'index']);
+Route::get('/Productos/gestionar', [ProductoController::class, 'index']);
+
+Route::get('/Categorias/gestionar', [CategoriaController::class, 'index']);
+
+Route::get('/principal', [PrincipalController::class, 'index']);
 
 Route::get('/Login', function () {
     return view('adminLogin');
