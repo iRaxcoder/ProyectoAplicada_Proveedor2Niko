@@ -6,10 +6,12 @@
         <div class="col-sm-12 col-md-7 col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <form method="post" action="" autocomplete="off">
+                   
+                    <form  action="/iniciar" method="POST" autocomplete="off">
+                    @csrf
                     <h7>Ingrese sus datos para Iniciar Sesi&oacute;n</h7>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="admin_id" name="admin_id" placeholder="Identificacion" required>
+                            <input type="text" class="form-control" id="admin_id" name="admin_id" placeholder="Identificacion">
                         </div>
                         <div class="form-group">
                             <h7>Contrase&ntilde;a</h7>
