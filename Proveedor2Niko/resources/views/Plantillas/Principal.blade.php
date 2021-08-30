@@ -32,8 +32,6 @@
 
   @yield('cuerpo')
 
-
-
   @yield('pie')
   <footer class="bg-light text-center text-lg-start">
     <!-- Grid container -->

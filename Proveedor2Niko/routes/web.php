@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/principal', function () {
-    return view('PrincipalView');
-});
+Route::get('/principal', [ProductoController::class, 'index']);
 
 Route::get('/Login', function () {
     return view('adminLogin');

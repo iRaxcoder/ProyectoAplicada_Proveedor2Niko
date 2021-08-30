@@ -15,8 +15,8 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //  $productos = tb_producto::all();
-        //  return view('Producto')->with('productos', $productos);
+        $productos = tb_producto::all();
+        return view('PrincipalView')->with('productos', $productos);
     }
 
     public function ShowAgregar()
