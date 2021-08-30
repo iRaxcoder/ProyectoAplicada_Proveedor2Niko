@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,6 @@ Route::get('/principal', [PrincipalController::class, 'index']);
 Route::get('/Login', function () {
     return view('adminLogin');
 });
+
+
+Route::post('/iniciar', [AdminController::class, 'iniciar']);
