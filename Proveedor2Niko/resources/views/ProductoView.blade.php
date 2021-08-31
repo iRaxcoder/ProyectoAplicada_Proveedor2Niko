@@ -27,7 +27,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/articulos/guardarArticulo" method="POST" class="mt-2 ml-2 p-3">
+                <form action="/articulos/guardarArticulo" enctype="multipart/form-data" method="POST" class="mt-2 ml-2 p-3">
 
                     @csrf
                     <div class="form-group">
@@ -101,7 +101,10 @@
         Precio
     </th>
     <th>
-        Ruta Imagen
+        Imagen
+    </th>
+    <th>
+        Ruta img
     </th>
     <th>
         Stock
@@ -129,6 +132,9 @@
             {{$producto->PRECIO}}
         </td>
 
+        <td>
+            <img src="/img/{{$producto->RUTA_IMAGEN}}" alt="" height="60px" width="60px">
+        </td>
 
         <td>
             {{$producto->RUTA_IMAGEN}}
@@ -139,12 +145,12 @@
         </td>
 
         <td>
-            {{$producto->ID_CATEGORIA}}
+            {{$producto->NOMBRE_CATEGORIA}}
         </td>
 
         <td>
 
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditar">
+            <button class="btn btn-primary" onclick="ponerInfoProductEnModal(this); return false;" data-bs-toggle="modal" data-bs-target="#modalEditar">
                 <i class="fas fa-edit"></i>
             </button>
 
@@ -175,16 +181,55 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Modal body text goes here.</p>
+                <form action="/articulos/editarArticulo" enctype="multipart/form-data" method="POST" class="mt-2 ml-2 p-3">
+                    @csrf
+                    <div class="form-group">
+                        <label for="lblNombre">Nombre actual</label>
+                        <input readonly type="text"name="nombreEA" id="nombreEA">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="lblNombre">Nombre</label>
+                        <input type="text" class="form-control" value="{{old('nombreE')}}" name="nombreE" id="nombreE" placeholder="nombre del producto">
+                        {!! $errors->first('nombreE','<small style="color: red;">:message</small>') !!}
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="itPrecio">Precio</label>
+                        <input type="number" min="1" name="precioE" value="{{old('precioE')}}" class="form-control" id="precioE" placeholder="precio">
+                        {!! $errors->first('precioE','<small style="color: red;">:message</small>') !!}
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="itFile">Imagen actual</label>
+                        <input readonly type="text" id="imagenEA" name="imagenEA">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="itFile">Imagen</label>
+                        <input type="file" id="imagenE" value="{{old('imagenE')}}" name="imagenE">
+                        {!! $errors->first('imagenE','<small style="color: red;">:message</small>') !!}
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="itStocl">Stock</label>
+                        <input type="number" min="1" name="stockE" value="{{old('stockE')}}" class="form-control" id="stockE" placeholder="disponibles">
+                        {!! $errors->first('stockE','<small style="color: red;">:message</small>') !!}
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="sCategoria">Categoría</label>
+                        <select id="categoriaE" name="categoriaE" value="{{old('categoriaE')}}" class="form-select" aria-label="Default select example">
+                            <option selected>Seleccionar categoría</option>
+                            @foreach($datos['categorias'] as $categoria)
+                            <option>{{$categoria->NOMBRE_CATEGORIA}}</option>
+                            @endforeach
+                        </select>
+                        {!! $errors->first('categoriaE','<small style="color: red;">:message</small>') !!}
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Guardar cambios</button>
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Guardar cambios</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             </div>
         </div>
     </div>
 </div>
 
-
-
+<script src="{{asset('js/ModificarProducto.js')}}"></script>
 @endsection

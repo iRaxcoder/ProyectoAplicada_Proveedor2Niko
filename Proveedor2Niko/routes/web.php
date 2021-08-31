@@ -21,6 +21,7 @@ Route::get('/Productos/gestionar', [ProductoController::class, 'index']);
 
 Route::post('/articulos/guardarArticulo', [ProductoController::class, 'store']);
 
+Route::post('/articulos/editarArticulo', [ProductoController::class, 'edit']);
 
 Route::get('/Categorias/gestionar', [CategoriaController::class, 'index']);
 
