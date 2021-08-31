@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/Productos/gestionar', [ProductoController::class, 'index']);
 
+Route::post('/articulos/guardarArticulo', [ProductoController::class, 'store']);
+
+
 Route::get('/Categorias/gestionar', [CategoriaController::class, 'index']);
 
 Route::get('/principal', [PrincipalController::class, 'index']);

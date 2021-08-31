@@ -15,8 +15,9 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = tb_producto::all();
-        return view('ProductoView')->with('productos', $productos);
+        $datos['categorias'] = DB::table('tb_categoria')->get();
+        $datos['productos'] = tb_producto::all();
+        return view('ProductoView')->with('datos', $datos);
     }
 
     public function ShowAgregar()
@@ -54,8 +55,34 @@ class ProductoController extends Controller
         ], [
 
             'nombre.required' => 'El nombre del producto es requerido'
-
         ]);
+
+        //busca id en la base de datos
+
+        $id_categoria = DB::table('tb_categoria')
+            ->select('ID_CATEGORIA')
+            ->where('NOMBRE_CATEGORIA', '=', request('categoria'))
+            ->get();
+
+        //construye procedimiento almacenado
+
+        $procsentence = "CALL sp_insertar_producto( :nombre, :precio, :imagen, :stock, :categoria)";
+
+        $params = array();
+        $params['nombre'] = $request->nombre;
+        $params['precio'] = $request->precio;
+        $params['imagen'] = $request->imagen;
+        $params['stock'] = $request->stock;
+        $params['categoria'] = $id_categoria->toArray()[0]->{"ID_CATEGORIA"};
+
+        $res = array();
+        $res = DB::select($procsentence, $params);
+
+        if (isset($res[0]->{1})) {
+            return redirect('/Productos/gestionar')->with('mensaje', 'Guardado con éxito.');
+        } else {
+            return redirect('/Productos/gestionar')->with('mensaje', 'Ya existe un producto con ese nombre.');
+        }
     }
 
     /**
