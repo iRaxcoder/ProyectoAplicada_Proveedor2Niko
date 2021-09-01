@@ -185,8 +185,15 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+
+        $procsentence = "CALL sp_borrar_producto(:p_id_producto)";
+
+        $params = array();
+        $params['p_id_producto'] = request()->ID_PRODUCTO;
+        $res = array();
+        $res = DB::select($procsentence, $params); 
+        return response()->json('exito');
     }
 }
