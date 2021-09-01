@@ -13,3 +13,22 @@ function ponerInfoProductEnModal(accion) {
     $("#stockE").val(stock);
     $("#categoriaE").val(categoria);
 }
+
+function EliminarArticulo(tabla) {
+    var fila = tabla.parentNode.parentNode;
+    id_articulo = fila.cells[0].innerText;
+
+    var data={'ID_PRODUCTO':id_articulo};
+
+    $.ajax({
+       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+        url:'/articulos/eliminarArticulo',
+        data: data,
+        type:"POST",
+        
+        success: function (msg) {
+            window.location.href = '/Productos/gestionar';
+    }
+    });
+
+}

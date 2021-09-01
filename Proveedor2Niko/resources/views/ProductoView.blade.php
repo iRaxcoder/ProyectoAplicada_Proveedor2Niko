@@ -90,7 +90,7 @@
 
 @if (count ($datos['productos']))
 
-<table class="table p-3 table-responsive">
+<table id="table" class="table p-3 table-responsive">
     <th>
         ID
     </th>
@@ -154,9 +154,12 @@
                 <i class="fas fa-edit"></i>
             </button>
 
-            <button class="btn btn-danger">
+          
+            <button class="btn btn-danger" onclick="EliminarArticulo(this); return false;">
+            <meta name="csrf-token" content="{{ csrf_token() }}">
                 <i class="fas fa-trash-alt"></i>
             </button>
+        
 
         </td>
 
