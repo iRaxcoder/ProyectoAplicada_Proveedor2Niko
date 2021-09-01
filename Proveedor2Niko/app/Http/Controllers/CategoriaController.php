@@ -15,7 +15,7 @@ class CategoriaController extends Controller
     public function index()
     {
         $categorias['categorias'] = DB::table('tb_categoria')->get();
-        return view('CategoriaView')->with('datos',$categorias);
+        return view('CategoriaView')->with('datos', $categorias);
     }
 
     /**
@@ -36,7 +36,28 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
+        //asi se validan los campos
+        request()->validate([
+            'nombre' => 'required',
+        ], [
+
+            'nombre.required' => 'El nombre de la categoría es requerido.'
+        ]);
         //
+
+        $procsentence = "CALL sp_insertar_categoria( :nombre)";
+
+        $params = array();
+        $params['nombre'] = $request->nombre;
+
+        $res = array();
+        $res = DB::select($procsentence, $params);
+
+        if (isset($res[0]->{1})) {
+            return redirect('/Categorias/gestionar')->with('mensaje', 'Guardado con éxito.');
+        } else {
+            return redirect('/Categorias/gestionar')->with('mensaje', 'Ya existe una categoría con ese nombre.');
+        }
     }
 
     /**
@@ -47,7 +68,7 @@ class CategoriaController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

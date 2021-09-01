@@ -15,7 +15,7 @@
     </div>
 </div>
 
-<hr style="width: 34%; margin: 13px;">
+<hr style="width: 35%; margin: 13px;">
 
 <div class="modal" id="modalRegistrar" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -122,11 +122,9 @@
             {{$producto->ID_PRODUCTO}}
         </td>
 
-
         <td>
             {{$producto->NOMBRE_PRODUCTO}}
         </td>
-
 
         <td>
             {{$producto->PRECIO}}
@@ -149,20 +147,15 @@
         </td>
 
         <td>
-
             <button class="btn btn-primary" onclick="ponerInfoProductEnModal(this); return false;" data-bs-toggle="modal" data-bs-target="#modalEditar">
                 <i class="fas fa-edit"></i>
             </button>
 
-          
             <button class="btn btn-danger" onclick="EliminarArticulo(this); return false;">
-            <meta name="csrf-token" content="{{ csrf_token() }}">
+                <meta name="csrf-token" content="{{ csrf_token() }}">
                 <i class="fas fa-trash-alt"></i>
             </button>
-        
-
         </td>
-
     </tr>
 
     @endforeach
@@ -170,7 +163,9 @@
 
 @else
 
-{{"sin productos"}}
+<div class="alert alert-danger">
+    No hay categorías
+</div>
 
 @endif
 
@@ -188,7 +183,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="lblNombre">Nombre actual</label>
-                        <input readonly type="text"name="nombreEA" id="nombreEA">
+                        <input readonly type="text" name="nombreEA" id="nombreEA">
                     </div>
                     <div class="form-group mt-2">
                         <label for="lblNombre">Nombre</label>
