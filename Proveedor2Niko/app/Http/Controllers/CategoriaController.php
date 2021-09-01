@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoriaController extends Controller
 {
@@ -13,7 +14,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        return view('CategoriaView');
+        $categorias['categorias'] = DB::table('tb_categoria')->get();
+        return view('CategoriaView')->with('datos',$categorias);
     }
 
     /**
