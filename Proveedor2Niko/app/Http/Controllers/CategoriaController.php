@@ -66,9 +66,16 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        
+        $procsentence = "CALL sp_mostrar_categoria_producto(:id_categoria)";
+
+        $params = array();
+        $params['id_categoria'] = request()->ID_CATEGORIA;
+
+        $res = array();
+        $res = DB::select($procsentence, $params);
+        return response()->json($res);
     }
 
     /**

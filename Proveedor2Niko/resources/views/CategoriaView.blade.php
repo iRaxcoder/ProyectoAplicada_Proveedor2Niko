@@ -1,7 +1,10 @@
 @extends('Plantillas.Principal')
 
-
 @section('cuerpo')
+<link rel="stylesheet" href="/css/animacionCarga2.css">
+
+<div class="cargando"></div>
+
 
 <div class="row">
     <div class="col col-md-3">
@@ -18,7 +21,7 @@
 
 @if (count ($datos['categorias']))
 
-<table id="table" class="table p-3 table-responsive">
+<table id="tableCategorias" class="table p-3 table-responsive">
     <th>
         ID
     </th>
@@ -40,7 +43,8 @@
         </td>
 
         <td>
-            <button data-idCategoria="4" class="btn btn-primary" onclick="ponerInfoProductEnModal(this); return false;" data-bs-toggle="modal" id= "btnVer"data-bs-target="#modalVer">
+            <button class="btn btn-primary" onclick="ponerInfoProductEnModal(this); return false;" data-bs-toggle="modal" id="{{$categoria->ID_CATEGORIA}}" data-bs-target="#modalVer">
+                <meta name="csrf-token" content="{{ csrf_token() }}">
                 <i class="fas fa-eye"></i>
             </button>
             <button data-nombreCategoria="{{$categoria->NOMBRE_CATEGORIA}}" data-idCategoria="{{$categoria->ID_CATEGORIA}}" class="btn btn-secondary" onclick="ponerInfoProductEnModal(this); return false;" data-bs-toggle="modal" data-bs-target="#modalEditar">
@@ -70,7 +74,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/categorias/guardarCategoria" method="POST" class="mt-2 ml-2 p-3">
+                <form action="/Categorias/guardarCategoria" method="POST" class="mt-2 ml-2 p-3">
                     @csrf
                     <div class="form-group">
                         <label for="lblNombre">Nombre</label>
@@ -91,15 +95,17 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
+                <div class="loader2">
+                    <img class="loading-image" height="100px" width="100px" src="/otrosRecursos/cargando.gif" alt="loading..">
+                </div>
                 <h5 class="modal-title">Productos asociados a la categoría</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <div class="mensaje"></div>
             <div class="modal-body">
-                @isset($datos['productos'])
-                @if (count ($datos['productos']))
-                <table id="table" class="table p-3 table-responsive">
+                <table id="tableProductosCat" class="table p-3 table-responsive">
                     <th>
                         ID
                     </th>
@@ -118,52 +124,11 @@
                     <th>
                         Stock
                     </th>
-                    <th>
-                        Categoria
-                    </th>
-                    @foreach ($datos['productos'] as $producto)
-                    <tr>
-                        <td>
-                            {{$producto->ID_PRODUCTO}}
-                        </td>
+                    <tbody>
 
 
-                        <td>
-                            {{$producto->NOMBRE_PRODUCTO}}
-                        </td>
-
-
-                        <td>
-                            {{$producto->PRECIO}}
-                        </td>
-
-                        <td>
-                            <img src="/img/{{$producto->RUTA_IMAGEN}}" alt="" height="60px" width="60px">
-                        </td>
-
-                        <td>
-                            {{$producto->RUTA_IMAGEN}}
-                        </td>
-
-                        <td>
-                            {{$producto->STOCK}}
-                        </td>
-
-                        <td>
-                            {{$producto->NOMBRE_CATEGORIA}}
-                        </td>
-                    </tr>
-                    @endforeach
+                    </tbody>
                 </table>
-
-                @else
-
-                <div class="alert alert-danger">
-                    No hay categorias
-                </div>
-
-                @endif
-                @endisset
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -171,6 +136,6 @@
         </div>
     </div>
 </div>
-
+</script>
 <script src="{{asset('js/VerProductoCategoria.js')}}"></script>
 @endsection

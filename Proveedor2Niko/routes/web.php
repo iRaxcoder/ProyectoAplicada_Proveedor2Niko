@@ -37,4 +37,6 @@ Route::get('/Login', function () {
 Route::post('/iniciar', [AdminController::class, 'iniciar']);
 
 
-Route::post('/categorias/guardarCategoria', [CategoriaController::class, 'store']);
+Route::post('/Categorias/guardarCategoria', [CategoriaController::class, 'store']);
+
+Route::get('/Categorias/Articulos/mostrar', [CategoriaController::class, 'show']);
