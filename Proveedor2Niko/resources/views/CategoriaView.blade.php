@@ -92,12 +92,13 @@
 </div>
 
 <div class="modal" id="modalVer" tabindex="-1" role="dialog">
+<div class="loader2" style="display: none;">
+    <img class="loading-image" height="100px" width="100px" src="/otrosRecursos/cargando.gif" alt="loading..">
+</div>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="loader2">
-                    <img class="loading-image" height="100px" width="100px" src="/otrosRecursos/cargando.gif" alt="loading..">
-                </div>
+
                 <h5 class="modal-title">Productos asociados a la categoría</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

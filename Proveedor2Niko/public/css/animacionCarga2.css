@@ -1,7 +1,7 @@
 .loading-image {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 5%;
+    left: 5%;
     z-index: 10;
   }
   .loader2
