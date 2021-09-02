@@ -43,7 +43,7 @@
         </td>
 
         <td>
-            <button class="btn btn-primary" onclick="ponerInfoProductEnModal(this); return false;" data-bs-toggle="modal" id="{{$categoria->ID_CATEGORIA}}" data-bs-target="#modalVer">
+            <button class="btn btn-primary" onclick="ponerInfoProductEnModal(this); return false;" data-bs-toggle="modal" name="{{$categoria->NOMBRE_CATEGORIA}}" id="{{$categoria->ID_CATEGORIA}}" data-bs-target="#modalVer">
                 <meta name="csrf-token" content="{{ csrf_token() }}">
                 <i class="fas fa-eye"></i>
             </button>
@@ -98,8 +98,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-
-                <h5 class="modal-title">Productos asociados a la categoría</h5>
+                <h5 id="resultadoCategoria" class="modal-title"></h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

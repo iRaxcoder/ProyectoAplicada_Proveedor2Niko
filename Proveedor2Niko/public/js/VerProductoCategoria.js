@@ -2,6 +2,8 @@ function ponerInfoProductEnModal(boton) {
     var data = {
         'ID_CATEGORIA': boton.id
     };
+    resultadoCat = document.getElementById("resultadoCategoria");
+    resultadoCat.innerHTML="Resultado para "+"'"+boton.name+"'";
     contador = 0;
     $("#tableProductosCat").find("tr:gt(0)").remove();
     tablaCategorias = $("#tableProductosCat");
