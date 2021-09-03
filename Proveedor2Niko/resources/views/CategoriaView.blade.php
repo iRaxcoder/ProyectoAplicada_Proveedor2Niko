@@ -9,8 +9,11 @@
 <div class="row">
     <div class="col col-md-3">
         <div class="input-group mt-3 p-3">
-            <input type="search" class="form-control rounded" placeholder="Categoria" aria-label="Search" aria-describedby="search-addon" />
-            <button type="button" class="btn btn-outline-primary">buscar</button>
+            <form action="/Categorias/buscar" method="POST">
+                @csrf
+                <input id="busqueda" name="busqueda" type="search" class="form-control rounded" placeholder="Categoria" aria-label="Search" aria-describedby="search-addon" />
+                <button type="submit" class="btn btn-outline-primary">buscar</button>
+            </form>
         </div>
     </div>
     <div class="col col-md-3">

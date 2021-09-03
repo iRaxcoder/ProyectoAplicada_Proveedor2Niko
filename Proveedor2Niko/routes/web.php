@@ -44,3 +44,5 @@ Route::post('/Categorias/guardarCategoria', [CategoriaController::class, 'store'
 Route::get('/Categorias/Articulos/mostrar', [CategoriaController::class, 'show']);
 
 Route::post('/Categorias/editar', [CategoriaController::class, 'edit']);
+
+Route::post('/Categorias/buscar', [CategoriaController::class, 'find']);
