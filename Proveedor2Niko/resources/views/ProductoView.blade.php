@@ -6,8 +6,11 @@
 <div class="row">
     <div class="col col-md-3">
         <div class="input-group mt-3 p-3">
-            <input type="search" class="form-control rounded" placeholder="Nombre" aria-label="Search" aria-describedby="search-addon" />
-            <button type="button" class="btn btn-outline-primary">buscar</button>
+            <form action="/articulos/buscarArticulo" method="POST">
+            @csrf
+            <input id="busqueda" name="busqueda" type="search" class="form-control rounded" placeholder="Nombre" aria-label="Search" aria-describedby="search-addon" />
+            <button type="submit" class="btn btn-outline-primary">buscar</button>
+            </form>
         </div>
     </div>
     <div class="col col-md-3">
@@ -151,7 +154,7 @@
                 <i class="fas fa-edit"></i>
             </button>
 
-            <button class="btn btn-danger" onclick="EliminarArticulo(this); return false;">
+            <button class="btn btn-danger" onclick="confirmacionModal(this); return false;" data-bs-toggle="modal" data-bs-target="#modalConfirmar">
                 <meta name="csrf-token" content="{{ csrf_token() }}">
                 <i class="fas fa-trash-alt"></i>
             </button>
@@ -228,6 +231,25 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal" id="modalConfirmar" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            
+           
+            <div class="modal-body">
+            <h5 class="text-center"> Esta seguro que desea eliminar el articulo?</h5> 
+            <input id="id_articulo" name="id_articulo" type="hidden" value="secret">
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary mt-2" onclick="EliminarArticulo( $('#id_articulo').val()); return false;">Confirmar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script src="{{asset('js/ModificarProducto.js')}}"></script>
 @endsection

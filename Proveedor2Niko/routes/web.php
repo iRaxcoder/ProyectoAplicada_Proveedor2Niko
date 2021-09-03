@@ -25,6 +25,8 @@ Route::post('/articulos/editarArticulo', [ProductoController::class, 'edit']);
 
 Route::post('/articulos/eliminarArticulo', [ProductoController::class, 'destroy']);
 
+Route::post('/articulos/buscarArticulo', [ProductoController::class, 'nameFilter']);
+
 Route::get('/Categorias/gestionar', [CategoriaController::class, 'index']);
 
 Route::get('/principal', [PrincipalController::class, 'index']);
