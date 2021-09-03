@@ -196,4 +196,20 @@ class ProductoController extends Controller
         $res = DB::select($procsentence, $params); 
         return response()->json('exito');
     }
+
+    //filtro por busqueda
+    public function nameFilter(Request $request){
+        //asi se validan los campos
+        request()->validate([
+            'busqueda' => 'required'
+        ]);
+        $procsentence = "CALL sp_buscar_producto(:p_nombre_producto)";
+        $datos['categorias'] = DB::table('tb_categoria')->get();
+
+        $params = array();
+        $params['p_nombre_producto'] = request()->busqueda;
+        $datos['productos'] = DB::select($procsentence,$params);
+
+        return view('ProductoView')->with('datos', $datos);
+    }
 }

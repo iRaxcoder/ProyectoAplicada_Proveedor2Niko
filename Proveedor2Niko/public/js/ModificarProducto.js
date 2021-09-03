@@ -14,9 +14,17 @@ function ponerInfoProductEnModal(accion) {
     $("#categoriaE").val(categoria);
 }
 
-function EliminarArticulo(tabla) {
+function confirmacionModal(tabla) {
     var fila = tabla.parentNode.parentNode;
     id_articulo = fila.cells[0].innerText;
+    $("#id_articulo ").val(id_articulo);
+
+   
+
+}
+
+function EliminarArticulo(id_articulo) {
+   
 
     var data={'ID_PRODUCTO':id_articulo};
 
