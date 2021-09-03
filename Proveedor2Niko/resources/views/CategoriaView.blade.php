@@ -18,6 +18,20 @@
     </div>
 </div>
 <hr style="width: 41%; margin: 13px;">
+@if(session()->has('mensaje'))
+
+@if (session()->get('mensaje')=="Ya existe una categoría con ese nombre.")
+<div class="alert alert-danger">
+    {{ session()->get('mensaje') }}
+</div>
+@else
+
+<div class="alert alert-success">
+    {{ session()->get('mensaje') }}
+</div>
+@endif
+
+@endif
 
 @if (count ($datos['categorias']))
 
@@ -47,7 +61,7 @@
                 <meta name="csrf-token" content="{{ csrf_token() }}">
                 <i class="fas fa-eye"></i>
             </button>
-            <button data-nombreCategoria="{{$categoria->NOMBRE_CATEGORIA}}" data-idCategoria="{{$categoria->ID_CATEGORIA}}" class="btn btn-secondary" onclick="ponerInfoProductEnModal(this); return false;" data-bs-toggle="modal" data-bs-target="#modalEditar">
+            <button  class="btn btn-secondary"   onclick="modificarModal(this); return false;" data-bs-toggle="modal" data-bs-target="#modalEditarCategoria">
                 <i class="fas fa-edit"></i>
             </button>
         </td>
@@ -136,6 +150,40 @@
         </div>
     </div>
 </div>
+
+<div class="modal" id="modalEditarCategoria" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar una Categoria</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/Categorias/editar"  method="POST" class="mt-2 ml-2 p-3">
+                    @csrf
+                    <div class="form-group">
+                        <input id="id_categoriaup" name="id_categoriaup" type="hidden">
+                        <label for="lblNombre">Nombre actual</label>
+                        <input readonly type="text" name="nombre_catA" id="nombre_catA">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="lblNombre">Nombre</label>
+                        <input type="text" class="form-control" value="{{old('nombre_catA')}}" name="nombre_categoriaup" id="nombre_categoriaup">
+                        {!! $errors->first('nombre_catA','<small style="color: red;">:message</small>') !!}
+                    </div>
+              
+                    <button type="submit" class="btn btn-primary mt-2">Guardar cambios</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </script>
 <script src="{{asset('js/VerProductoCategoria.js')}}"></script>
 @endsection

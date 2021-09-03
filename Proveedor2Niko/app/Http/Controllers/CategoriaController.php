@@ -56,7 +56,8 @@ class CategoriaController extends Controller
         if (isset($res[0]->{1})) {
             return redirect('/Categorias/gestionar')->with('mensaje', 'Guardado con éxito.');
         } else {
-            return redirect('/Categorias/gestionar')->with('mensaje', 'Ya existe una categoría con ese nombre.');
+            return redirect('/Categorias/gestionar')->with('mensaje', 
+        );
         }
     }
 
@@ -84,9 +85,23 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        request()->validate([
+            'nombre_categoriaup' => 'required',
+            'id_categoriaup' => 'required'
+        ]);
+
+        $procsentence = "CALL sp_modificar_categoria( :p_id_categoria, :p_nombre_categoria)";
+
+        $params = array();
+        $params['p_nombre_categoria'] = $request->nombre_categoriaup;
+        $params['p_id_categoria'] = $request->id_categoriaup;
+        
+        $res = array();
+        $res = DB::select($procsentence, $params);
+
+        return redirect('/Categorias/gestionar')->with('mensaje', 'Modificado con éxito.');
     }
 
     /**

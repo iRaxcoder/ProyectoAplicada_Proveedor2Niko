@@ -50,7 +50,7 @@ class AdminController extends Controller
           return view('PrincipalView');
         }
         else{
-            return view('adminLogin');
+            return redirect('Login')->with('mensaje','Usuario no encontrado, ingrese los datos correctamente.');
         }
 
        // return view('PrincipalView');

@@ -50,3 +50,13 @@ function ponerInfoProductEnModal(boton) {
         }
     });
 }
+
+function modificarModal(accion){
+    var fila = accion.parentNode.parentNode;
+    id_cat = fila.cells[0].innerText;
+    nombre_cat = fila.cells[1].innerText;
+
+    $("#nombre_catA").val(nombre_cat);
+    $("#id_categoriaup").val(id_cat);
+
+}
