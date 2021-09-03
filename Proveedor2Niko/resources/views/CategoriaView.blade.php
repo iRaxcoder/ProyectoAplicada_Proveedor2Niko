@@ -13,6 +13,7 @@
                 @csrf
                 <input id="busqueda" name="busqueda" type="search" class="form-control rounded" placeholder="Categoria" aria-label="Search" aria-describedby="search-addon" />
                 <button type="submit" class="btn btn-outline-primary">buscar</button>
+                <a href="/Categorias/gestionar">ver todos</a>
             </form>
         </div>
     </div>

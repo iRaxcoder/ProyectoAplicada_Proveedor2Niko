@@ -9,11 +9,14 @@
             <form action="/articulos/buscarArticulo" method="POST">
             @csrf
             <input id="busqueda" name="busqueda" type="search" class="form-control rounded" placeholder="Nombre" aria-label="Search" aria-describedby="search-addon" />
-            <button type="submit" class="btn btn-outline-primary">buscar</button>
+            <button  type="submit" class="btn btn-outline-primary">buscar</button>
+            <a href="/Productos/gestionar">ver todos</a>
             </form>
+            
         </div>
     </div>
     <div class="col col-md-3">
+       
         <button style="position: absolute;top: 72px;" data-bs-toggle="modal" data-bs-target="#modalRegistrar" type=" button" class="btn btn-primary">Agregar nuevo</button>
     </div>
 </div>
