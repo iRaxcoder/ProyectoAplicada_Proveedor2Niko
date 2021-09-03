@@ -116,6 +116,16 @@ class CategoriaController extends Controller
         //
     }
 
+    public function find(Request $request)
+    {
+       
+        $categorias['categorias'] = DB::table('tb_categoria')
+        ->where('NOMBRE_CATEGORIA', 'LIKE', "%$request->busqueda%")
+        ->get();
+        return view('CategoriaView')->with('datos', $categorias)
+        ;
+    }
+
     /**
      * Remove the specified resource from storage.
      *
