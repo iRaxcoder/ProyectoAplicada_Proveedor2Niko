@@ -7,21 +7,19 @@
     <div class="col col-md-3">
         <div class="input-group mt-3 p-3">
             <form action="/articulos/buscarArticulo" method="POST">
-            @csrf
-            <input id="busqueda" name="busqueda" type="search" class="form-control rounded" placeholder="Nombre" aria-label="Search" aria-describedby="search-addon" />
-            <button  type="submit" class="btn btn-outline-primary">buscar</button>
-            <a href="/Productos/gestionar">ver todos</a>
+                @csrf
+                <input id="busqueda" name="busqueda" type="search" class="form-control rounded" placeholder="Nombre" aria-label="Search" aria-describedby="search-addon" />
+                <button type="submit" class="btn btn-outline-primary mt-">buscar</button>
+                <a class="btn btn-success" href="/Productos/gestionar"> <i class="fas fa-sync"></i> </a>
             </form>
-            
         </div>
     </div>
     <div class="col col-md-3">
-       
-        <button style="position: absolute;top: 72px;" data-bs-toggle="modal" data-bs-target="#modalRegistrar" type=" button" class="btn btn-primary">Agregar nuevo</button>
+        <button style="position: absolute;top: 72px; left:240px" data-bs-toggle="modal" data-bs-target="#modalRegistrar" type=" button" class="btn btn-primary">Agregar nuevo</button>
     </div>
 </div>
 
-<hr style="width: 35%; margin: 13px;">
+<hr style="width: 27%; margin: 13px;">
 
 <div class="modal" id="modalRegistrar" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -239,11 +237,11 @@
 <div class="modal" id="modalConfirmar" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            
-           
+
+
             <div class="modal-body">
-            <h5 class="text-center"> Esta seguro que desea eliminar el articulo?</h5> 
-            <input id="id_articulo" name="id_articulo" type="hidden" value="secret">
+                <h5 class="text-center"> Esta seguro que desea eliminar el articulo?</h5>
+                <input id="id_articulo" name="id_articulo" type="hidden" value="secret">
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary mt-2" onclick="EliminarArticulo( $('#id_articulo').val()); return false;">Confirmar</button>

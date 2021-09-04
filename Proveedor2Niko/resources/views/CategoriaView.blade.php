@@ -12,16 +12,16 @@
             <form action="/Categorias/buscar" method="POST">
                 @csrf
                 <input id="busqueda" name="busqueda" type="search" class="form-control rounded" placeholder="Categoria" aria-label="Search" aria-describedby="search-addon" />
-                <button type="submit" class="btn btn-outline-primary">buscar</button>
-                <a href="/Categorias/gestionar">ver todos</a>
+                <button type="submit" class="btn btn-outline-primary mt-2">buscar</button>
+                <a class="btn btn-success" href="/Categorias/gestionar"> <i class="fas fa-sync"></i> </a>
             </form>
         </div>
     </div>
-    <div class="col col-md-3">
-        <button style="position: absolute;top: 72px;" data-bs-toggle="modal" data-bs-target="#modalRegistrar" type=" button" class="btn btn-primary">Agregar nueva categoria</button>
+    <div class="col col-md-1">
+        <button style="position: absolute;top: 72px; left:240px" data-bs-toggle="modal" data-bs-target="#modalRegistrar" type=" button" class="btn btn-primary">Agregar nueva categoria</button>
     </div>
 </div>
-<hr style="width: 41%; margin: 13px;">
+<hr style="width: 32%; margin: 13px;">
 @if(session()->has('mensaje'))
 
 @if (session()->get('mensaje')=="Ya existe una categoría con ese nombre.")
@@ -65,7 +65,7 @@
                 <meta name="csrf-token" content="{{ csrf_token() }}">
                 <i class="fas fa-eye"></i>
             </button>
-            <button  class="btn btn-secondary"   onclick="modificarModal(this); return false;" data-bs-toggle="modal" data-bs-target="#modalEditarCategoria">
+            <button class="btn btn-secondary" onclick="modificarModal(this); return false;" data-bs-toggle="modal" data-bs-target="#modalEditarCategoria">
                 <i class="fas fa-edit"></i>
             </button>
         </td>
@@ -110,9 +110,9 @@
 </div>
 
 <div class="modal" id="modalVer" tabindex="-1" role="dialog">
-<div class="loader2" style="display: none;">
-    <img class="loading-image" height="100px" width="100px" src="/otrosRecursos/cargando.gif" alt="loading..">
-</div>
+    <div class="loader2" style="display: none;">
+        <img class="loading-image" height="100px" width="100px" src="/otrosRecursos/cargando.gif" alt="loading..">
+    </div>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -165,7 +165,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/Categorias/editar"  method="POST" class="mt-2 ml-2 p-3">
+                <form action="/Categorias/editar" method="POST" class="mt-2 ml-2 p-3">
                     @csrf
                     <div class="form-group">
                         <input id="id_categoriaup" name="id_categoriaup" type="hidden">
@@ -177,7 +177,7 @@
                         <input type="text" class="form-control" value="{{old('nombre_catA')}}" name="nombre_categoriaup" id="nombre_categoriaup">
                         {!! $errors->first('nombre_catA','<small style="color: red;">:message</small>') !!}
                     </div>
-              
+
                     <button type="submit" class="btn btn-primary mt-2">Guardar cambios</button>
                 </form>
             </div>

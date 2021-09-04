@@ -30,31 +30,30 @@
   @yield('cuerpo')
   <div class="loader3" id="loader3"></div>
   @yield('pie')
-  <footer class="bg-light text-center text-lg-start">
+  <footer class="text-center text-lg-start" style="background-color: rgb(191, 75, 64)">
     <!-- Grid container -->
     <div class="container p-4">
       <!--Grid row-->
       <div class="row">
         <!--Grid column-->
         <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Footer text</h5>
+          <h5 class="text-uppercase">Proyecto de informática aplicada aplicada</h5>
 
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-            molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae
-            aliquam voluptatem veniam, est atque cumque eum delectus sint!
+            Esta página es parte de un proyecto del curso informática aplicada
+            de la carrera informática empresarial en la Universidad de Costa Rica 
           </p>
         </div>
         <!--Grid column-->
 
         <!--Grid column-->
         <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Footer text</h5>
+          <h5 class="text-uppercase">Distribuidora Niko</h5>
 
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-            molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae
-            aliquam voluptatem veniam, est atque cumque eum delectus sint!
+            Ofrecemos los mejores productos a los mejores frescos
+            a muchas de las tiendas de Costa Rica.
+            Niko ofrece los mejores estándares de calidad.
           </p>
         </div>
         <!--Grid column-->
@@ -64,16 +63,16 @@
     <!-- Grid container -->
 
     <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2020 Copyright:
-      <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    <div class="text-center p-3" style="background-color: rgb(71, 111, 189)">
+     Página desarrollada por
+      <a class="text-dark">Raquel Ramírez y Randall Mora, UCR</a>
     </div>
     <!-- Copyright -->
   </footer>
 
   <script type="text/javascript">
     $(window).load(function() {
-      // $(".loader3").fadeOut("slow");
+       $(".loader3").fadeOut("slow");
     });
   </script>
   <script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>
